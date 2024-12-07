@@ -1,1 +1,10 @@
-#Add your proxies below in each line in the format protocol://username:password@ip:port or protocol://ip:port
+http://beedortj:mxymblztfl56@198.23.239.134:6540
+http://beedortj:mxymblztfl56@207.244.217.165:6712
+http://beedortj:mxymblztfl56@107.172.163.27:6543
+http://beedortj:mxymblztfl56@64.137.42.112:5157
+http://beedortj:mxymblztfl56@173.211.0.148:6641
+http://beedortj:mxymblztfl56@161.123.152.115:6360
+http://beedortj:mxymblztfl56@167.160.180.203:6754
+http://beedortj:mxymblztfl56@154.36.110.199:6853
+http://beedortj:mxymblztfl56@173.0.9.70:5653
+http://beedortj:mxymblztfl56@173.0.9.209:5792
