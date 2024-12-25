@@ -13,7 +13,9 @@ For advanced users, please use the [test](https://github.com/engageub/InternetIn
 
 - Use code **InternetIncome** to get 50% off on Residential Plans.
 - Use code **InternetIncome10** to get 10% on ISP Plans.
-  
+
+File Internet Crime Complaints World Wide here: https://www.ic3.gov/
+
 ## 💰	Register with the following links:
 ### <ins>[Click here to Sign Up now](https://github.com/engageub/InternetIncome/wiki/Registration-Links)</ins> 
 ## :judge: Comparison of different apps based on proxy type 
@@ -32,7 +34,8 @@ For advanced users, please use the [test](https://github.com/engageub/InternetIn
 | [CryptoProxy](https://cryptoproxy.page.link/3J4ASzZ2tf58M77dA) | :heavy_check_mark:	  | :x: |No limit|1| Crypto|
 | [Nodepay](https://app.nodepay.ai/register?ref=jQKVeB8MZjYfTcq) | :heavy_check_mark:	  | :x: |3|1| Rewards|
 | [Gradient Network](https://app.gradient.network/signup?code=OKM7KM) | :heavy_check_mark: | :x: |No limit|1| Rewards|
-| [BearShare](https://app.bearshare.app/register?ref=770048aacaab7ecf1ca1c97492de831d17a3ab559d4a1f8b735) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Crypto |
+| [Network3 AI](https://account.network3.ai/register_page?rc=62e3b8a3) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Rewards |
+| [Titan Network](https://test1.titannet.io/intiveRegister?code=ILOgrq) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Rewards |
 | [Adnade](https://t.co/KthcbzPa08)  | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1|Crypto, Paypal| 
 | [EarnFM](https://t.co/SX6ggtooDW)  | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Crypto, Paypal, Giftcard|
 | [Peer2Profit](https://t.me/peer2profit_app_bot?start=163956712261b9cf129932a)  | :heavy_check_mark:	  | :heavy_check_mark:	 | No limit|No limit| Crypto|
@@ -48,13 +51,14 @@ For advanced users, please use the [test](https://github.com/engageub/InternetIn
 | [GagaNode](https://t.co/UO6hnDCv4M) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Crypto |
 | [Meson Network](https://dashboard.meson.network/register) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Crypto |
 
-
-
 * [Click here](https://prnt.sc/siTVsNW9QDrL) to view the screenshot above as some browsers don't support checkmarks. 
 * [Adnade](https://t.co/KthcbzPa08) and [Ebesucher](https://www.ebesucher.com/?ref=engageub) use firefox/chrome browser inside the container, so they consume more resources compared to other containers.
 * No Limit indicates that the website has not mentioned any specifics and multiple proxies were working. Try to use 1 device per IP.
 * To convert crypto to other wallets or currencies, you may use [BestChange](https://www.bestchange.com/?p=1252652).
 * The comparison mentioned above was updated on 25-04-2024 and may be subject to change later.
+
+### <ins>[Click here view Browser Extension Based Apps](https://github.com/engageub/InternetIncome/wiki/Browser-Extension-Based-Apps)</ins> 
+
 
 
 ## :house_with_garden:	Prerequisites 	
