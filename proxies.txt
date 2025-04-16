@@ -1,10 +1,6 @@
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.63.23:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.61.228:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.62.97:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.62.196:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.63.244:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.60.210:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.63.16:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.61.111:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.62.220:8080
-http://vitaciXiFYZ:NJEj4cyaXat2TUS@45.3.63.171:8080
+http://morgangbPUpc:xFKXOPL6eUsrhTp@154.193.154.247:9090
+http://morgangbPUpc:xFKXOPL6eUsrhTp@154.193.158.93:9090
+http://morgangbPUpc:xFKXOPL6eUsrhTp@154.222.132.204:9090
+http://morgangbPUpc:xFKXOPL6eUsrhTp@154.193.152.240:9090
+http://morgangbPUpc:xFKXOPL6eUsrhTp@154.193.154.128:9090
+http://morgangbPUpc:xFKXOPL6eUsrhTp@154.193.152.129:9090
