@@ -30,6 +30,7 @@ containers_file="containers.txt"
 container_names_file="containernames.txt"
 earnapp_file="earnapp.txt"
 earnapp_data_folder="earnappdata"
+proxybase_file="proxybase.txt"
 proxyrack_file="proxyrack.txt"
 networks_file="networks.txt"
 mysterium_file="mysterium.txt"
@@ -56,7 +57,7 @@ required_files=($banner_file $properties_file $firefox_profile_zipfile $restart_
 files_to_be_removed=($dns_resolver_file $containers_file $container_names_file $networks_file $mysterium_file $ebesucher_file $adnade_file $adnade_containers_file $firefox_containers_file $chrome_containers_file)
 folders_to_be_removed=($adnade_data_folder $firefox_data_folder $firefox_profile_data $earnapp_data_folder $chrome_data_folder $chrome_profile_data)
 back_up_folders=($titan_data_folder $network3_data_folder $bitping_data_folder $traffmonetizer_data_folder $mysterium_data_folder)
-back_up_files=($earnapp_file $proxyrack_file)
+back_up_files=($earnapp_file $proxybase_file $proxyrack_file)
 container_pulled=false
 docker_in_docker_detected=false
 
@@ -502,6 +503,25 @@ start_containers() {
     fi
   fi
 
+  # Starting PacketSDK container
+  if [[ $PACKET_SDK_APP_KEY ]]; then
+    echo -e "${GREEN}Starting PacketSDK container..${NOCOLOUR}"
+    if [ "$container_pulled" = false ]; then
+      sudo docker pull packetsdk/packetsdk
+    fi
+    if CONTAINER_ID=$(sudo docker run -d --name packetsdk$UNIQUE_ID$i --restart=always $NETWORK_TUN $LOGS_PARAM $DNS_VOLUME packetsdk/packetsdk -appkey=$PACKET_SDK_APP_KEY); then
+      echo "$CONTAINER_ID" | tee -a $containers_file
+      echo "packetsdk$UNIQUE_ID$i" | tee -a $container_names_file
+    else
+      echo -e "${RED}Failed to start container for PacketSDK. Exiting..${NOCOLOUR}"
+      exit 1
+    fi
+  else
+    if [[ "$container_pulled" == false && "$ENABLE_LOGS" == true ]]; then
+      echo -e "${RED}PacketSDK API is not configured. Ignoring PacketSDK..${NOCOLOUR}"
+    fi
+  fi
+
   # Starting Gaganode container
   if [[ $GAGANODE_TOKEN ]]; then
     echo -e "${GREEN}Starting Gaganode container..${NOCOLOUR}"
@@ -585,6 +605,41 @@ start_containers() {
     fi
   fi
 
+  # Starting ProxyBase container
+  if [ "$PROXYBASE" = true ]; then
+    echo -e "${GREEN}Starting Proxybase container..${NOCOLOUR}"
+    echo -e "${GREEN}Copy the following node uuid and paste in your proxybase dashboard${NOCOLOUR}"
+    echo -e "${GREEN}You will also find the uuids in the file $proxybase_file in the same folder${NOCOLOUR}"
+    if [ "$container_pulled" = false ]; then
+      sudo docker pull proxybase/proxybase
+    fi
+    if [ -f $proxybase_file ] && proxybase_uuid=$(sed "${i}q;d" $proxybase_file);then
+      if [[ $proxybase_uuid ]];then
+        echo $proxybase_uuid
+      else
+        echo "Proxybase UUID does not exist, creating UUID"
+        proxybase_uuid=`cat /dev/urandom | LC_ALL=C tr -dc 'a-f0-9' | dd bs=1 count=32 2>/dev/null`
+        printf "%s\n" "$proxybase_uuid" | tee -a $proxybase_file
+      fi
+    else
+      echo "Proxybase UUID does not exist, creating UUID"
+      proxybase_uuid=`cat /dev/urandom | LC_ALL=C tr -dc 'a-f0-9' | dd bs=1 count=32 2>/dev/null`
+      printf "%s\n" "$proxybase_uuid" | tee -a $proxybase_file
+    fi
+
+    if CONTAINER_ID=$(sudo docker run -d --name proxybase$UNIQUE_ID$i $NETWORK_TUN $LOGS_PARAM $DNS_VOLUME --restart=always -e device_id=$proxybase_uuid proxybase/proxybase); then
+      echo "$CONTAINER_ID" | tee -a $containers_file
+      echo "proxybase$UNIQUE_ID$i" | tee -a $container_names_file
+    else
+      echo -e "${RED}Failed to start container for Proxybase. Exiting..${NOCOLOUR}"
+      exit 1
+    fi
+  else
+    if [[ "$container_pulled" == false && "$ENABLE_LOGS" == true ]]; then
+      echo -e "${RED}Proxybase is not enabled. Ignoring Proxybase..${NOCOLOUR}"
+    fi
+  fi
+
   # Starting IPRoyals pawns container
   if [[ $IPROYALS_EMAIL && $IPROYALS_PASSWORD ]]; then
     echo -e "${GREEN}Starting IPRoyals container..${NOCOLOUR}"
@@ -604,22 +659,41 @@ start_containers() {
     fi
   fi
 
-  # Starting Bearshare container
-  if [[ $BEARSHARE_EMAIL && $BEARSHARE_PASSWORD ]]; then
-    echo -e "${GREEN}Starting Bearshare container..${NOCOLOUR}"
+  # Starting CastarSDK container
+  if [[ $CASTAR_SDK_KEY ]]; then
+    echo -e "${GREEN}Starting CastarSDK container..${NOCOLOUR}"
     if [ "$container_pulled" = false ]; then
-      sudo docker pull bearshare/bearshare:latest
+      sudo docker pull ghcr.io/adfly8470/castarsdk/castarsdk@sha256:e61d4c89ed9278921d2620a56f879a21d2ea78abcb1e73e514623048f4a2002d
     fi
-    if CONTAINER_ID=$(sudo docker run -d --name bearshare$UNIQUE_ID$i --restart=always $LOGS_PARAM $DNS_VOLUME $NETWORK_TUN bearshare/bearshare:latest -email=$BEARSHARE_EMAIL -password=$BEARSHARE_PASSWORD); then
+    if CONTAINER_ID=$(sudo docker run -d --name castarsdk$UNIQUE_ID$i --restart=always $NETWORK_TUN $LOGS_PARAM $DNS_VOLUME -e KEY=$CASTAR_SDK_KEY ghcr.io/adfly8470/castarsdk/castarsdk@sha256:e61d4c89ed9278921d2620a56f879a21d2ea78abcb1e73e514623048f4a2002d); then
       echo "$CONTAINER_ID" | tee -a $containers_file
-      echo "bearshare$UNIQUE_ID$i" | tee -a $container_names_file
+      echo "castarsdk$UNIQUE_ID$i" | tee -a $container_names_file
     else
-      echo -e "${RED}Failed to start container for Bearshare. Exiting..${NOCOLOUR}"
+      echo -e "${RED}Failed to start container for CastarSDK. Exiting..${NOCOLOUR}"
       exit 1
     fi
   else
     if [[ "$container_pulled" == false && "$ENABLE_LOGS" == true ]]; then
-      echo -e "${RED}Bearshare Email or Password is not configured. Ignoring Bearshare..${NOCOLOUR}"
+      echo -e "${RED}CastarSDK is not configured. Ignoring CastarSDK..${NOCOLOUR}"
+    fi
+  fi
+
+  # Starting Wipter container
+  if [[ $WIPTER_EMAIL && $WIPTER_PASSWORD ]]; then
+    echo -e "${GREEN}Starting Wipter container..${NOCOLOUR}"
+    if [ "$container_pulled" = false ]; then
+      sudo docker pull --platform=linux/amd64 ghcr.io/adfly8470/wipter/wipter@sha256:aae4e3e33c15b787619fb6b979696c8af7a6cf4b477ee591c6db2868c4f1ff39
+    fi
+    if CONTAINER_ID=$(sudo docker run -d --platform=linux/amd64 --name wipter$UNIQUE_ID$i --restart=always $LOGS_PARAM $DNS_VOLUME $NETWORK_TUN -e WIPTER_EMAIL=$WIPTER_EMAIL -e WIPTER_PASSWORD=$WIPTER_PASSWORD ghcr.io/adfly8470/wipter/wipter@sha256:aae4e3e33c15b787619fb6b979696c8af7a6cf4b477ee591c6db2868c4f1ff39); then
+      echo "$CONTAINER_ID" | tee -a $containers_file
+      echo "wipter$UNIQUE_ID$i" | tee -a $container_names_file
+    else
+      echo -e "${RED}Failed to start container for Wipter. Exiting..${NOCOLOUR}"
+      exit 1
+    fi
+  else
+    if [[ "$container_pulled" == false && "$ENABLE_LOGS" == true ]]; then
+      echo -e "${RED}Wipter Email or Password is not configured. Ignoring Wipter..${NOCOLOUR}"
     fi
   fi
 
@@ -820,7 +894,20 @@ start_containers() {
     echo -e "${GREEN}Starting Earnapp container..${NOCOLOUR}"
     echo -e "${GREEN}Copy the following node url and paste in your earnapp dashboard${NOCOLOUR}"
     echo -e "${GREEN}You will also find the urls in the file $earnapp_file in the same folder${NOCOLOUR}"
-    RANDOM_ID=`cat /dev/urandom | LC_ALL=C tr -dc 'a-f0-9' | dd bs=1 count=32 2>/dev/null`
+    for loop_count in {1..500}; do
+      if [ "$loop_count" -eq 500 ]; then
+        echo -e "${RED}Reached maximum attempts. Unique UUID cannot be generated. Exiting..${NOCOLOUR}"
+        exit 1
+      fi
+      RANDOM_ID=`cat /dev/urandom | LC_ALL=C tr -dc 'a-f0-9' | dd bs=1 count=32 2>/dev/null`
+      if [ -f $earnapp_file ]; then
+        if ! grep -qF "$RANDOM_ID" "$earnapp_file"; then
+          break
+        fi
+      else
+        break;
+      fi
+    done
     date_time=`date "+%D %T"`
     if [ "$container_pulled" = false ]; then
       sudo docker pull fazalfarhan01/earnapp:lite
