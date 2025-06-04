@@ -5,7 +5,7 @@
 This script lets you earn income by sharing your internet bandwidth. The income is passive and you don't have to do anything after the setup but keep getting payouts to your account.
 The main advantage of this script is the use of multiple proxies through docker containers. 
 This script has been tested on Linux amd64, armv7, arm64, and aarch64 platforms. 
-Your income depends on the number of proxies used and the proxy location. If you use all the apps mentioned, you can earn about $50 per month or more from 1 IP depending on the location of the proxy.
+Your income depends on the number of proxies used and the proxy location. If you use all the apps mentioned, you can earn about $50 per month or more from 1 IP depending on the location of the proxy and demand.
 Please read the respective apps' legal terms or FAQ section if you have any queries on the type of traffic sent. 
 For advanced users, please use the [test](https://github.com/engageub/InternetIncome/tree/test) branch.
 
@@ -37,6 +37,7 @@ File Internet Crime Complaints World Wide here: https://www.ic3.gov/
 | [Uprock](https://t.co/xwUf7kY9U0) | :heavy_check_mark:	  | :x: |No limit|1| Crypto |
 | [Nodepay](https://app.nodepay.ai/register?ref=jQKVeB8MZjYfTcq) | :heavy_check_mark:	  | :x: |3|1| Rewards|
 | [Gradient Network](https://app.gradient.network/signup?code=OKM7KM) | :heavy_check_mark: | :x: |No limit|1| Rewards|
+| [URnetwork](https://ur.io/c?bonus=YSC0T7) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Crypto |
 | [Network3 AI](https://account.network3.ai/register_page?rc=62e3b8a3) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Rewards |
 | [Titan Network](https://test1.titannet.io/intiveRegister?code=ILOgrq) | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1| Rewards |
 | [Adnade](https://t.co/KthcbzPa08)  | :heavy_check_mark:	  | :heavy_check_mark: |No limit|1|Crypto, Paypal| 
@@ -87,7 +88,7 @@ Follow this [tutorial](https://www.youtube.com/watch?v=2ezNqqaSjq8) till 7.30 mi
   
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)  
 ### Want to try Docker for free without installation?
-If you like to use Docker directly for free, you can use [Play with Docker](https://labs.play-with-docker.com/). It resets every 4 hours. Please use the [tunproxy](https://github.com/engageub/InternetIncome/tree/tunproxy) branch to test it using proxies.
+If you like to use Docker directly for free, you can use [Play with Docker](https://labs.play-with-docker.com/). It resets every 2 hours. Please use the [tunproxy](https://github.com/engageub/InternetIncome/tree/tunproxy) branch to test it using proxies.
 ## 👇	Next steps❓	
 Download the code and edit the configuration file properties.conf with your account details.  
 If you don't have GUI access but have terminal access, you can use the following commands to download the code.
